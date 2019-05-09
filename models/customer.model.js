@@ -1,7 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var uniqueValidator = require('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
+const validate = require('mongoose-validator');
 
+const emailValidator = [
+    validate({
+        validator: 'isLength',
+        arguments: [0, 40],
+        message: 'Email must not exceed {ARGS[1]} characters.'
+    }),
+    validate({
+        validator: 'isEmail',
+        message: 'Email must be valid.'
+    })
+];
 // Create Customer Schema & Model
 const CustomerSchema = new Schema({
     firstname: {
@@ -13,11 +25,9 @@ const CustomerSchema = new Schema({
     },
     email: {
         type: String,
-        lowercase: true,
+        required: [true, 'Email is required.'],
         unique: true,
-        required: [true, "can't be blank"],
-        match: [/\S+@\S+\.\S+/, 'is invalid'],
-        index: true
+        validate: emailValidator
     }
 })
 CustomerSchema.plugin(uniqueValidator);

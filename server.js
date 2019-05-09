@@ -9,15 +9,19 @@ const app = express();
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
+mongoose.Promise = global.Promise; // use ES6 promise instead
 
 //Connect to mongodb
-mongoose.connect('mongodb://localhost/CustomerDB');
-mongoose.Promise = global.Promise; // use ES6 promise instead
+mongoose.connect('mongodb://localhost/CustomerDB', ).then(() => { console.log('Database is connected') },
+    err => { console.log('Can not connect to the database' + err) }
+);
+
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-//initialize routes
+//initialize routess
+app.use('/', require('./routes/customer.route'));
 app.use('/api', require('./routes/api'));
 
 //error handling
