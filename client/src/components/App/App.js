@@ -4,15 +4,21 @@ import { Container } from "reactstrap";
 import '../../index.css';
 import AppHeader from './AppHeader';
 import CustomerTable from '../CustomerTable/CustomerTable';
+import axios from 'axios';
 
 class App extends Component {
   state = {
-    customers: [
-      {firstname: "Abiral", lastname: "Rai", email: "abiral@gmail.com" },
-      {firstname: "Sam", lastname: 'Smith', email: 'Smith@gmail.com'},
-      {firstname: "Justin", lastname: 'tim', email: 'tim@gmail.com'}
-    ]
+    customers: []
   };
+  componentDidMount(){
+      axios.get('http://localhost:5000/api/customers')
+        .then(response => {
+          this.setState({ customers: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
   render() {
     return (
       <div className="App">

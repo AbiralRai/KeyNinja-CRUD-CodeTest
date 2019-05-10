@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
 
+import ModalCustomer from '../ModalCustomer/ModalCustomer';
+
 class CustomerTable extends Component {
 
     render() {
@@ -15,6 +17,10 @@ class CustomerTable extends Component {
                                 <td>{customer.firstname}</td>
                                 <td>{customer.lastname}</td>
                                 <td>{customer.email}</td>
+                                <ModalCustomer 
+                                buttonLabel='Edit'
+                                className='classname'
+                                />
                         </tr>
             );
         });
@@ -22,21 +28,20 @@ class CustomerTable extends Component {
         
 
         return (
-            <div className="customer-list">
-                <Table hover>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {customers}
-                        </tbody>
-                </Table>
-            </div>
+          <div className="customer-list">
+            <Table hover>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>{customers}</tbody>
+            </Table>
+          </div>
         );
     }
 }
