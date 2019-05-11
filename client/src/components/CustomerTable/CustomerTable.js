@@ -1,49 +1,152 @@
 import React, { Component } from "react";
-import { Table } from "reactstrap";
-
+import { Table } from 'semantic-ui-react';
 import ModalCustomer from '../ModalCustomer/ModalCustomer';
+import ModalConfirmDelete from '../ModalConfirmDelete/ModalConfirmDelete';
 
-class CustomerTable extends Component {
+// class CustomerTable extends Component {
 
-    render() {
+//     render() {
 
-        let customers = this.props.customers;
+//         let customers = this.props.customers;
 
-        customers = customers.map( (customer, index) => {
-            return(
+//         customers = customers.map((customer, index) => (
+//           <Table.Row key={customer._id}>
+//             <Table.Cell>{index + 1}</Table.Cell>
+//             <Table.Cell>{customer.firstname}</Table.Cell>
+//             <Table.Cell>{customer.lastname}</Table.Cell>
+//             <Table.Cell>{customer.email}</Table.Cell>
+//             <Table.Cell>
+//               <ModalCustomer
+//                 headerTitle="Edit Customer"
+//                 buttonTriggerTitle="Edit"
+//                 buttonSubmitTitle="Save"
+//                 buttonColor="blue"
+//                 customerID={customer._id}
+//                 server={this.props.server}
+//               />
 
-                <tr key={index}>
-                                <th scope="row">{index}</th>
-                                <td>{customer.firstname}</td>
-                                <td>{customer.lastname}</td>
-                                <td>{customer.email}</td>
-                                <ModalCustomer 
-                                buttonLabel='Edit'
-                                className='classname'
-                                />
-                        </tr>
-            );
-        });
+//               <ModalConfirmDelete
+//                 headerTitle="Delete User"
+//                 buttonTriggerTitle="Delete"
+//                 buttonColor="black"
+//                 customer={customer}
+//                 onUserDeleted={this.props.onDeleted}
+//                 server={this.props.server}
+//               />
+//             </Table.Cell>
+//           </Table.Row>
+//         ));
+        
+//         return(
+//             <Table singleLine>
+//                 <Table.Header>
+//                     <Table.Row>
+//                         <Table.HeaderCell>#</Table.HeaderCell>
+//                         <Table.HeaderCell>FirstName</Table.HeaderCell>
+//                         <Table.HeaderCell>LastName</Table.HeaderCell>
+//                         <Table.HeaderCell>Email</Table.HeaderCell>
+//                         <Table.HeaderCell>Action</Table.HeaderCell>
+//                     </Table.Row>
+//                 </Table.Header>
+//                 <Table.Body>
+//                     {customers}
+//                 </Table.Body>
+//             </Table>
+//         );
+    
+
+
+
+
+//         // customers = customers.map( (customer, index) => {
+//         //     return (
+//         //       <tr key={index}>
+//         //         <th scope="row">{index}</th>
+//         //         <td>{customer.firstname}</td>
+//         //         <td>{customer.lastname}</td>
+//         //         <td>{customer.email}</td>
+//         //       </tr>
+//         //     );
+//         // });
 
         
 
-        return (
-          <div className="customer-list">
-            <Table hover>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>{customers}</tbody>
-            </Table>
-          </div>
-        );
-    }
+//         // return (
+//         //   <div className="customer-list">
+//         //     <Table hover>
+//         //       <thead>
+//         //         <tr>
+//         //           <th>#</th>
+//         //           <th>First Name</th>
+//         //           <th>Last Name</th>
+//         //           <th>Email</th>
+//         //           <th>Action</th>
+//         //         </tr>
+//         //       </thead>
+//         //       <tbody>{customers}</tbody>
+//         //     </Table>
+//         //     {/* <ModalCustomer /> */}
+//         //   </div>
+//         // );
+//     }
+// }
+
+// export default CustomerTable;
+
+// import React, { Component } from "react";
+// import { Table } from "semantic-ui-react";
+
+// import ModalUser from "../ModalUser/ModalUser";
+// import ModalConfirmDelete from "../ModalConfirmDelete/ModalConfirmDelete";
+
+class CustomerTable extends Component {
+  render() {
+    let customers = this.props.customers;
+
+    customers = customers.map((customer, index) => (
+      <Table.Row key={customer._id}>
+        <Table.Cell>{index+1}</Table.Cell>
+        <Table.Cell>{customer.firstname}</Table.Cell>
+        <Table.Cell>{customer.lastname}</Table.Cell>
+        <Table.Cell>{customer.email}</Table.Cell>
+        <Table.Cell>
+          <ModalCustomer
+            headerTitle="Edit User"
+            buttonTriggerTitle="Edit"
+            buttonSubmitTitle="Save"
+            buttonColor="blue"
+            customerID={customer._id}
+            onUpdated={this.props.onUpdated}
+            server={this.props.server}
+          />
+          <ModalConfirmDelete
+            headerTitle="Delete User"
+            buttonTriggerTitle="Delete"
+            buttonColor="black"
+            customer={customer}
+            onDeleted={this.props.onDeleted}
+            server={this.props.server}
+          />
+        </Table.Cell>
+      </Table.Row>
+    ));
+
+
+    return (
+      <Table singleLine>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>#</Table.HeaderCell>
+            <Table.HeaderCell>First Name</Table.HeaderCell>
+            <Table.HeaderCell>Last Name</Table.HeaderCell>
+            <Table.HeaderCell>Email</Table.HeaderCell>
+            <Table.HeaderCell>Action</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>{customers}</Table.Body>
+      </Table>
+    );
+  }
 }
 
 export default CustomerTable;
