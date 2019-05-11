@@ -20,7 +20,7 @@ class ModalConfirmDelete extends Component {
   handleClose = e => this.setState({ modalOpen: false });
 
   handleSubmit(e) {
-    let params = e.target.getAttribute("data-customerID");
+    let params = e.target.getAttribute("data-customerid");
 
     axios({
       method: "delete",
@@ -60,7 +60,7 @@ class ModalConfirmDelete extends Component {
         <Modal.Actions>
           <Button
             onClick={this.handleSubmit} 
-            data-customerID={this.props.customer._id}
+            data-customerid={this.props.customer._id}
             color="red"
           >
             Yes
