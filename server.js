@@ -18,9 +18,9 @@ mongoose.connect('mongodb://localhost/CustomerDB', ).then(() => { console.log('D
 );
 // Enable cross-origin access through the CORS middleware
 // NOTICE: For React development server only!
-if (process.env.CORS) {
+// if (process.env.CORS) {
   app.use(cors());
-}
+// }
 app.use(express.static('public'));
 app.use(bodyParser.json());
 

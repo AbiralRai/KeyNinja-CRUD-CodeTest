@@ -30,7 +30,7 @@ const CustomerSchema = new Schema({
         validate: emailValidator
     }
 })
-CustomerSchema.plugin(uniqueValidator);
+CustomerSchema.plugin(uniqueValidator, {message: "{PATH} already taken"});
 
 const Customer = mongoose.model('customer', CustomerSchema);
 
