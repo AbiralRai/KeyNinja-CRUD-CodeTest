@@ -9,14 +9,6 @@ class AppHeader extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-intro">Customer List</h1>
           <p>
-            A simple records system using MongoDB, Express.js, React.js, and
-            Node.js with real-time Create, Read, Update, and Delete operations
-          </p>
-          <p>
-            REST API was implemented on the back-end. React-bootstrap was used
-            for the UI.
-          </p>
-          <p>
             <a
               className="social-link"
               href="https://github.com/AbiralRai"

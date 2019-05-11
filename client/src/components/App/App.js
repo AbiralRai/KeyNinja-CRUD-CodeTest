@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "semantic-ui-react";
 import '../../index.css';
 import AppHeader from './AppHeader';
-import CustomerTable from '../CustomerTable/CustomerTable';
 import axios from 'axios';
 
+import CustomerTable from '../CustomerTable/CustomerTable';
 import ModalCustomer from '../ModalCustomer/ModalCustomer'
 
 
-// import CustomerList from '../CustomerList/CustomerList';
 
 
 
@@ -18,13 +16,13 @@ class App extends Component {
     customers: []
   };
 
-  server = "http://localhost:5000/api/customers";
+  server = "http://localhost:5000";
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/customers")
-      .then(response => {
-        this.setState({ customers: response.data });
+      .get("http://localhost:5000/api/customers/")
+      .then(res => {
+        this.setState({ customers: res.data });
       })
       .catch(function(error) {
         console.log("componentdidmount error: ", error);
@@ -34,7 +32,7 @@ class App extends Component {
   handleAdd = customer => {
     let customers = this.state.customers.slice();
     customers.push(customer);
-    this.setState({ customers: customer });
+    this.setState({ customers: customers });
   };
 
   handleUpdate = customer => {
@@ -66,7 +64,8 @@ class App extends Component {
           {/* <CustomerList /> */}
           <ModalCustomer
             headerTitle="Add Customer"
-            buttonTriggerTitle="Add neew"
+            buttonTriggerTitle="Add new"
+            buttonSubmitTitle="Add"
             buttonColor="green"
             onAdded={this.handleAdd}
             server={this.server}

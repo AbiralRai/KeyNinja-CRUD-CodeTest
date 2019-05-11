@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Message, Form } from "semantic-ui-react";
+import { Message, Form, Button } from "semantic-ui-react";
 import axios from "axios";
 
 class FormCus extends Component {
@@ -9,19 +9,22 @@ class FormCus extends Component {
     email: "",
     formClassName: "",
     formSuccessMessage: "",
-    formErrorMessage: ""
+    formErrorMessage: "",
   };
   
   componentWillMount() {
+         
     // Fill in the form with the appropriate data if user id is provided
     if (this.props.customerID) {
+
       axios
-        .get(`${this.props.server}/api/customers/${this.props.userID}`)
-        .then(customer => {
+        .get(`${this.props.server}/api/customers/${this.props.customerID}`)
+        .then(res => {
           this.setState({
-            firstname: customer.data.firstname,
-            lastname: customer.data.lastname,
-            email: customer.data.email
+            firstname: res.data.firstname,
+            lastname: res.data.lastname,
+            email: res.data.email
+            
           });
         })
         .catch(err => {
@@ -47,7 +50,6 @@ class FormCus extends Component {
           lastname: this.state.lastname,
           email: this.state.email
         }
-        
         const setMethod = this.props.customerID ? "put" : "post";
         const getCustomerID = this.props.customerID ? this.props.customerID : "";
         
@@ -55,7 +57,6 @@ class FormCus extends Component {
             method: setMethod,
             responseType: 'json',
             url: `${this.props.server}/api/customers/${getCustomerID}`,
-            //   url: {this.props.server} + '/api/customers/' + {getCustomerID},
             data: customer
         })
         .then( res => {
@@ -146,7 +147,7 @@ render(){
                 header='Error*'
                 content={formErrorMessage}
             />
-            <button color={this.props.buttonColor} floated='right'>{this.props.buttonSubmitTitle}</button>
+            <Button color={this.props.buttonColor} floated='right'>{this.props.buttonSubmitTitle}</Button>
             <br/> <br/>
         </Form>
     );
