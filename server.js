@@ -16,11 +16,7 @@ mongoose.Promise = global.Promise; // use ES6 promise instead
 mongoose.connect('mongodb://localhost/CustomerDB', ).then(() => { console.log('Database is connected') },
     err => { console.log('Can not connect to the database' + err) }
 );
-// Enable cross-origin access through the CORS middleware
-// NOTICE: For React development server only!
-if (process.env.CORS) {
   app.use(cors());
-}
 app.use(express.static('public'));
 app.use(bodyParser.json());
 

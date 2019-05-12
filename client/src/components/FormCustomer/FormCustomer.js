@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Message, Form, Button } from "semantic-ui-react";
 import axios from "axios";
 
-class FormCus extends Component {
+class FormCustomer extends Component {
   state = {
     firstname: "",
     lastname: "",
@@ -14,7 +14,7 @@ class FormCus extends Component {
   
   componentWillMount() {
          
-    // Fill in the form with the appropriate data if user id is provided
+    // Grab the data if customer id is provided
     if (this.props.customerID) {
 
       axios
@@ -33,17 +33,16 @@ class FormCus extends Component {
     }
   }
   handleChange = event => {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
+    const value = event.target.value;
+    const name = event.target.name;
 
     this.setState({
       [name]: value
     });
   }
 
-  handleSubmit = (event) => {
-      event.preventDefault();
+  handleSubmit = (e) => {
+      e.preventDefault();
 
       const customer = {
           firstname: this.state.firstname,
@@ -155,4 +154,4 @@ render(){
 }
 
 
-export default FormCus;
+export default FormCustomer;

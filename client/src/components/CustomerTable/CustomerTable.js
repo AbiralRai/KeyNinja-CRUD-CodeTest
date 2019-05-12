@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table } from 'semantic-ui-react';
 import ModalCustomer from '../ModalCustomer/ModalCustomer';
-import ModalConfirmDelete from '../ModalConfirmDelete/ModalConfirmDelete';
+import ModalDelete from '../ModalDelete/ModalDelete';
 
 
 class CustomerTable extends Component {
@@ -24,7 +24,7 @@ class CustomerTable extends Component {
             onUpdated={this.props.onUpdated}
             server={this.props.server}
           />
-          <ModalConfirmDelete
+          <ModalDelete
             headerTitle="Delete User"
             buttonTriggerTitle="Delete"
             buttonColor="black"
