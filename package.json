@@ -21,6 +21,7 @@
     "mongoose": "^5.5.6",
     "mongoose-unique-validator": "^2.0.3",
     "mongoose-validator": "^2.1.0",
+    "path": "^0.12.7",
     "string-capitalize-name": "^1.0.3"
   }
 }

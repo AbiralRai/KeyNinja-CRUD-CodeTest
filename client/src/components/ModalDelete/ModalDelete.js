@@ -3,7 +3,7 @@ import { Button, Modal } from "semantic-ui-react";
 import axios from "axios";
 
 
-class ModalConfirmDelete extends Component {
+class ModalDelete extends Component {
   constructor(props) {
     super(props);
 
@@ -74,4 +74,4 @@ class ModalConfirmDelete extends Component {
   }
 }
 
-export default ModalConfirmDelete;
+export default ModalDelete;
