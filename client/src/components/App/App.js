@@ -23,7 +23,7 @@ class App extends Component {
 
       .get(`${this.server}/api/customers/`)
       .then(res => {
-        this.setState({ customers: res.data });
+        this.setState({ customers: [... res.data] });
       })
       .catch(function(error) {
         console.log("componentdidmount error: ", error);
