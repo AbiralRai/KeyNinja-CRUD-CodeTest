@@ -14,7 +14,7 @@ class App extends Component {
 
   // server = "http://localhost:5000";
   // server = "https://agile-inlet-32982.herokuapp.com";
-  server = "http://localhost:5000" || '';
+  server = process.env.API_URL || "";
 
   componentDidMount() {
     console.log("server::", this.server);
