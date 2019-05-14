@@ -7,7 +7,7 @@ import ModalDelete from '../ModalDelete/ModalDelete';
 class CustomerTable extends Component {
   render() {
     let customers = this.props.customers;
-    customers = customers.map((customer, index) => {
+    customers = customers.map((customer, index) => 
 
       <Table.Row key={customer._id}>
         <Table.Cell>{index + 1}</Table.Cell>
@@ -34,7 +34,7 @@ class CustomerTable extends Component {
           />
         </Table.Cell>
       </Table.Row>
-    });
+    );
 
 
     return (
@@ -49,8 +49,7 @@ class CustomerTable extends Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>{customers}</Table.Body>
-      </Table>
-    );
+      </Table>);
   }
 }
 
