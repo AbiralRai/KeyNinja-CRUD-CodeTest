@@ -17,14 +17,14 @@ class App extends Component {
   server = process.env.PORT || '';
 
   componentDidMount() {
-    console.log("customer before", this.customer);
+    console.log("customer before", this.state.customer);
     axios
       // .get("http://localhost:5000/api/customers/")
 
       .get(`${this.server}/api/customers/`)
       .then(res => {
         this.setState({ customers: res.data });
-        console.log("customer after", this.customer);
+        console.log("customer after", this.state.customer);
       })
       .catch(function(error) {
         console.log("componentdidmount error: ", error);
