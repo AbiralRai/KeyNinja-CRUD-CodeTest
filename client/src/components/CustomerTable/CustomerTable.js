@@ -34,8 +34,7 @@ class CustomerTable extends Component {
           />
         </Table.Cell>
       </Table.Row>
-    }
-    );
+    });
 
 
     return (
