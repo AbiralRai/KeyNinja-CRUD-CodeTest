@@ -14,7 +14,7 @@ class App extends Component {
 
   // server = "http://localhost:5000";
   // server = "https://agile-inlet-32982.herokuapp.com";
-  server = process.env.PORT;
+  server = process.env.PORT || 5000;
 
   componentDidMount() {
     console.log("server::", this.server);
@@ -23,7 +23,7 @@ class App extends Component {
 
       .get(`${this.server}/api/customers/`)
       .then(res => {
-        this.setState({ customers: [...res.data] });
+        this.setState({ customers: res.data });
       })
       .catch(function(error) {
         console.log("componentdidmount error: ", error);

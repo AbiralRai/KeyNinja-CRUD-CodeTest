@@ -31,6 +31,7 @@ app.use(cors());
 //Server static asset if in production
 if (process.env.NODE_ENV === "production") {
 //   // Set static folder
+console.log('Process ENV: 'process.env.NODE_ENV);
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
