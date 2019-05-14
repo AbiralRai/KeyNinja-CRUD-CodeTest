@@ -12,11 +12,13 @@ class App extends Component {
     customers: []
   };
 
-  server = "http://localhost:5000";
+  // server = "http://localhost:5000";
+  server = process.env.REACT_APP_API_URL || "";
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/customers/")
+      // .get("http://localhost:5000/api/customers/")
+      .get(`${server}/api/customers/`)
       .then(res => {
         this.setState({ customers: res.data });
       })
@@ -28,8 +30,8 @@ class App extends Component {
   handleAdd = customer => {
     let customers = [...this.state.customers, customer];
     this.setState({
-      customers:customers
-    })
+      customers: customers
+    });
   };
 
   handleUpdate = customer => {
@@ -51,7 +53,7 @@ class App extends Component {
       return c._id !== customer._id;
     });
     this.setState({ customers: customers });
-  }
+  };
 
   render() {
     return (
