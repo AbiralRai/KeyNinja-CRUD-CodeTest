@@ -13,12 +13,13 @@ class App extends Component {
   };
 
   // server = "http://localhost:5000";
-  // server = "https://agile-inlet-32982.herokuapp.com";
-  server = process.env.REACT_APP_API_URL || "https://localhost:5000";
+  server = "https://agile-inlet-32982.herokuapp.com";
+  // server = process.env.REACT_APP_API_URL || "https://localhost:5000";
 
   componentDidMount() {
     axios
       // .get("http://localhost:5000/api/customers/")
+      console.log('server::', server)
       .get(`${this.server}/api/customers/`)
       .then(res => {
         this.setState({ customers: res.data });
