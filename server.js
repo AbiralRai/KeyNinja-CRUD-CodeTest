@@ -36,7 +36,7 @@ app.use(cors());
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
-}
+// }
 
 // app.use(express.static('public'));
 app.use(bodyParser.json());
