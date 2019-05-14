@@ -47,7 +47,6 @@ class App extends Component {
 
   handleDelete = customer => {
     let customers = this.state.customers;
-    console.log(customers);
     customers = customers.filter(c => {
       return c._id !== customer._id;
     });
