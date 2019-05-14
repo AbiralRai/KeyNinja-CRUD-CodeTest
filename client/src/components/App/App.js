@@ -13,8 +13,8 @@ class App extends Component {
   };
 
   // server = "http://localhost:5000";
-  server = "https://agile-inlet-32982.herokuapp.com";
-  // server = process.env.REACT_APP_API_URL || "https://localhost:5000";
+  // server = "https://agile-inlet-32982.herokuapp.com";
+  server = process.env.REACT_APP_API_URL || "https://localhost:5000";
 
   componentDidMount() {
     console.log("server::", this.server);
