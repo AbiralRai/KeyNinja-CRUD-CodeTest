@@ -8,8 +8,8 @@ class CustomerTable extends Component {
   render() {
     let customers = this.props.customers;
     customers = customers.map( function(customer, index){
-
-      <Table.Row key={customer._id}>
+      return(
+        <Table.Row key={customer._id}>
         <Table.Cell>{index + 1}</Table.Cell>
         <Table.Cell>{customer.firstname}</Table.Cell>
         <Table.Cell>{customer.lastname}</Table.Cell>
@@ -34,6 +34,7 @@ class CustomerTable extends Component {
           />
         </Table.Cell>
       </Table.Row>
+      );
     });
 
 
