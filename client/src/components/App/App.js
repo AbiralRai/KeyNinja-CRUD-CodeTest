@@ -19,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     axios
       // .get("http://localhost:5000/api/customers/")
-      console.log('server::', server)
+      console.log('server::', this.server)
       .get(`${this.server}/api/customers/`)
       .then(res => {
         this.setState({ customers: res.data });
