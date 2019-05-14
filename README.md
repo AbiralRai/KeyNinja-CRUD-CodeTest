@@ -7,7 +7,10 @@ The objective of this app is to create a CRUD customer list with a RESTful API. 
 
 # Instructions
 
-1) npm install && cd npm install
-2) cd .. && npm run dev
+1) Make sure mongodb is running locally(mongod)
+2) npm install 
+3) cd npm install
+4) cd ..
+5) npm run dev
 
-# This app uses localhost:5000 for REST Api, 3000 front-end client and mongod for local mongodb server.
+This app uses localhost:5000 for REST Api, 3000 front-end client and mongod for local mongodb server.
