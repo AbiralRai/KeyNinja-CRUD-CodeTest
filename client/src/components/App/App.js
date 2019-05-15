@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Container } from "semantic-ui-react";
+
 import "../../index.css";
 import axios from "axios";
 
 import AppHeader from "./AppHeader";
 import CustomerTable from "../CustomerTable/CustomerTable";
 import ModalCustomer from "../ModalCustomer/ModalCustomer";
+
 
 class App extends Component {
   state = {
