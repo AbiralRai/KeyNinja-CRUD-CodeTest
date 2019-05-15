@@ -17,7 +17,7 @@ class App extends Component {
   server = process.env.PORT || '';
 
   componentDidMount() {
-    console.log("customer before", this.state.customers);
+    console.log("server", this.server);
     axios
       // .get("http://localhost:5000/api/customers/")
 

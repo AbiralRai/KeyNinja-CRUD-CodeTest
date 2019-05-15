@@ -39,7 +39,7 @@ console.log('Process ENV: ',process.env.NODE_ENV);
   });
 }
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(bodyParser.json());
 
 //initialize routess
