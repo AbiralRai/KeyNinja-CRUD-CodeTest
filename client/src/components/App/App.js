@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Container } from "semantic-ui-react";
-import '../../index.css';
-import AppHeader from './AppHeader';
-import axios from 'axios';
+import "../../index.css";
+import axios from "axios";
 
-import CustomerTable from '../CustomerTable/CustomerTable';
-import ModalCustomer from '../ModalCustomer/ModalCustomer'
-
-
-
-
+import AppHeader from "./AppHeader";
+import CustomerTable from "../CustomerTable/CustomerTable";
+import ModalCustomer from "../ModalCustomer/ModalCustomer";
 
 class App extends Component {
   state = {
     customers: []
   };
 
-  server = "http://localhost:5000";
+  server = process.env.PORT || "";
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/customers/")
+      .get(`${this.server}/api/customers/`)
       .then(res => {
         this.setState({ customers: res.data });
       })
@@ -30,13 +26,14 @@ class App extends Component {
   }
 
   handleAdd = customer => {
-    let customers = this.state.customers.slice();
-    customers.push(customer);
-    this.setState({ customers: customers });
+    let customers = [...this.state.customers, customer];
+    this.setState({
+      customers: customers
+    });
   };
 
   handleUpdate = customer => {
-    let customers = this.state.customers.slice();
+    let customers = this.state.customers;
     for (let i = 0, n = customers.length; i < n; i++) {
       if (customers[i]._id === customer._id) {
         customers[i].firstname = customer.firstname;
@@ -49,19 +46,18 @@ class App extends Component {
   };
 
   handleDelete = customer => {
-    let customers = this.state.customers.slice();
+    let customers = this.state.customers;
     customers = customers.filter(c => {
       return c._id !== customer._id;
     });
     this.setState({ customers: customers });
-  }
+  };
 
   render() {
     return (
       <div className="App">
         <AppHeader />
         <Container>
-          {/* <CustomerList /> */}
           <ModalCustomer
             headerTitle="Add Customer"
             buttonTriggerTitle="Add new"
@@ -76,7 +72,6 @@ class App extends Component {
             customers={this.state.customers}
             server={this.server}
           />
-          {/* <CustomerTable customers={this.state.customers} /> */}
         </Container>
         <br />
       </div>
